@@ -1,0 +1,45 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Позволяет запускать вручную
+
+jobs:
+  deploy:
+    name: Deploy to striker.su
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 🔑 Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: 🔐 Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          
+      - name: 🚀 Deploy to server
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
+            cd ${{ secrets.DEPLOY_PATH }}
+            
+            echo "📥 Pulling latest changes..."
+            git pull origin main
+            
+            echo "🔄 Checking Git status..."
+            git status
+            
+            echo "✅ Deployment completed at $(date)"
+          ENDSSH
+          
+      - name: 🎉 Deployment Success
+        run: |
+          echo "✅ Successfully deployed to https://striker.pw"
+          echo "🔗 Check: https://striker.su"
