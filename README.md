@@ -3,11 +3,15 @@
 <div align="center">
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fstriker.pw&label=striker.pw)
+![Deploy Status](https://github.com/Strik-er/striker-portfolio/actions/workflows/deploy.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/Strik-er/striker-portfolio)
 ![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
 
 **Личное портфолио системного администратора с 18+ летним опытом**
 
+[🌐 Живая версия](https://striker.pw) • [📧 Контакты](#контакты) • [💼 LinkedIn](https://linkedin.com/in/dgusev)
+
+</div>
 [🌐 Живая версия](https://striker.pw) • [📧 Контакты](#контакты) • [💼 LinkedIn](https://linkedin.com/in/dgusev)
 
 </div>
