@@ -2,17 +2,17 @@
 
 <div align="center">
 
-![Website](https://img.shields.io/website?url=https%3A%2F%2Fstriker.pw&label=striker.pw)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fstriker.su&label=striker.su)
 ![Deploy Status](https://github.com/Strik-er/striker-portfolio/actions/workflows/deploy.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/Strik-er/striker-portfolio)
 ![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
 
 **Личное портфолио системного администратора с 18+ летним опытом**
 
-[🌐 Живая версия](https://striker.pw) • [📧 Контакты](#контакты) • [💼 LinkedIn](https://linkedin.com/in/dgusev)
+[🌐 Живая версия](https://striker.su) • [📧 Контакты](#контакты) • [💼 LinkedIn](https://linkedin.com/in/dgusev)
 
 </div>
-[🌐 Живая версия](https://striker.pw) • [📧 Контакты](#контакты) • [💼 LinkedIn](https://linkedin.com/in/dgusev)
+[🌐 Живая версия](https://striker.su) • [📧 Контакты](#контакты) • [💼 LinkedIn](https://linkedin.com/in/dgusev)
 
 </div>
 
@@ -139,7 +139,7 @@ python3 -m http.server 8000
 | 📧 Email | [striker@striker.su](mailto:striker@striker.su) |
 | 💬 Telegram | [@striker_pub](https://t.me/striker_pub) |
 | 💼 LinkedIn | [dgusev](https://linkedin.com/in/dgusev) |
-| 🌐 Сайт | [striker.pw](https://striker.pw) |
+| 🌐 Сайт | [striker.su](https://striker.su) |
 | ☎️ Телефон | +7 (999) 798-45-67 |
 
 </div>

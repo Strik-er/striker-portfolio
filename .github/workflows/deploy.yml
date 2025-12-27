@@ -41,5 +41,5 @@ jobs:
           
       - name: 🎉 Deployment Success
         run: |
-          echo "✅ Successfully deployed to https://striker.pw"
+          echo "✅ Successfully deployed to https://striker.su"
           echo "🔗 Check: https://striker.su"
