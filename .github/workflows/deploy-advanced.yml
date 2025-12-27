@@ -1,0 +1,73 @@
+name: Deploy with Validation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        
+      - name: 🔍 Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+          
+      - name: ✅ Validation passed
+        run: echo "Code validation successful"
+
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: validate  # Деплой только после успешной валидации
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 🔑 Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: 🔐 Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          
+      - name: 🚀 Deploy to server
+        env:
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
+            set -e
+            
+            cd $DEPLOY_PATH
+            
+            echo "📥 Pulling latest changes from origin..."
+            git pull origin main
+            
+            echo "🔄 Git status:"
+            git status
+            
+            echo "📊 Latest commit:"
+            git log -1 --oneline
+            
+            # Опционально: перезапуск сервисов
+            # sudo systemctl reload nginx
+            
+            echo "✅ Deployment completed successfully at $(date '+%Y-%m-%d %H:%M:%S')"
+          ENDSSH
+          
+      - name: 🎉 Success notification
+        run: |
+          echo "::notice::✅ Successfully deployed to https://striker.su"
+          echo "🔗 Live site: https://striker.su"
+          echo "📦 Commit: ${{ github.sha }}"
