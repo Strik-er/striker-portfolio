@@ -109,8 +109,8 @@ document.addEventListener('alpine:init', () => {
         "@type": "Person",
         "name": this.t('name'),
         "jobTitle": this.currentLang === 'ru' 
-          ? "Системный администратор, Технический директор" 
-          : "System Administrator, Technical Director",
+          ? "Генеральный директор, Системный администратор" 
+          : "CEO, System Administrator",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": this.t('city'),
