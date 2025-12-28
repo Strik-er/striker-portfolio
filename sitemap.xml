@@ -1,19 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Главная страница -->
   <url>
-    <loc>https://striker.pw</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://striker.pw" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://striker.pw/en" />
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://striker.su/</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://striker.su/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://striker.su/en" />
+    <image:image>
+      <image:loc>https://striker.su/img/me.jpg</image:loc>
+      <image:title>Дмитрий Гусев - Системный администратор</image:title>
+      <image:caption>Профессиональное фото системного администратора Дмитрия Гусева</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Секция: О себе -->
   <url>
-    <loc>https://striker.pw/en</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://striker.pw" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://striker.pw/en" />
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://striker.su/#about</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Секция: Портфолио -->
+  <url>
+    <loc>https://striker.su/#portfolio</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Секция: Навыки -->
+  <url>
+    <loc>https://striker.su/#skills</loc>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Секция: Образование -->
+  <url>
+    <loc>https://striker.su/#education</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Секция: Сертификаты -->
+  <url>
+    <loc>https://striker.su/#certs</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Секция: Увлечения -->
+  <url>
+    <loc>https://striker.su/#hobbies</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Резюме PDF (когда появится) -->
+  <!--
+  <url>
+    <loc>https://striker.su/files/DGusev_CV.pdf</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  -->
+  
 </urlset>

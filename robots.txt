@@ -1,3 +1,60 @@
+# robots.txt для striker.su
+# Системный администратор Дмитрий Гусев
+
 User-agent: *
 Allow: /
-Sitemap: https://striker.pw/sitemap.xml
+
+# Запрет на индексацию служебных файлов
+Disallow: /.git/
+Disallow: /*.log$
+Disallow: /vendor/
+Disallow: /node_modules/
+
+# Разрешить индексацию всех изображений
+Allow: /img/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Разрешить индексацию статики
+Allow: /css/
+Allow: /js/
+Allow: /locales/
+
+# Разрешить индексацию документов
+Allow: /files/
+
+# Sitemap
+Sitemap: https://striker.su/sitemap.xml
+
+# Специфичные боты
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /img/
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+
+# Блокировка плохих ботов
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Host (для Яндекса)
+Host: striker.su
