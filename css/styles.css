@@ -1,0 +1,240 @@
+/* ===== Global Styles ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 70px;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Theme Styles ===== */
+body.light-theme {
+  background-color: #fff;
+  color: #222;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ddd;
+}
+
+body.dark-theme nav#main-navbar {
+  background-color: #1f1f1f !important;
+  color: #ddd !important;
+}
+
+/* ===== Navigation ===== */
+nav#main-navbar {
+  height: 70px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav#main-navbar .nav-link,
+nav#main-navbar .navbar-brand {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+nav#main-navbar .nav-link:hover,
+nav#main-navbar .nav-link:focus {
+  color: #007bff;
+}
+
+nav#main-navbar.dark-theme .navbar-brand {
+  color: #ddd;
+}
+
+/* ===== Profile Picture ===== */
+img#profile-pic {
+  max-width: 100%;
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+  margin-top: 20px;
+}
+
+body.dark-theme img#profile-pic {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Buttons ===== */
+.lang-btn,
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 22px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: inherit;
+}
+
+.lang-btn:hover,
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+.lang-btn.active {
+  border-bottom: 2px solid #007bff;
+}
+
+/* ===== Portfolio Cards ===== */
+.card-portfolio {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .card-portfolio {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.card-portfolio .card {
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 12px;
+}
+
+body.light-theme .card-portfolio .card {
+  background-color: #fff;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .card-portfolio .card {
+  background-color: #2c2f3a;
+  color: #ddd;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-theme .card-portfolio .card-title {
+  color: #eee;
+}
+
+body.dark-theme .card-portfolio .card-text {
+  color: #ccc;
+}
+
+/* ===== Footer ===== */
+footer#contact-footer {
+  background: #f8f9fa;
+  padding: 15px 0;
+  margin-top: auto;
+}
+
+body.dark-theme footer#contact-footer {
+  background: #1f1f1f;
+}
+
+footer#contact-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.1rem;
+}
+
+footer#contact-footer a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+footer#contact-footer a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+footer#contact-footer i {
+  font-size: 1.3rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 575.98px) {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  #profile-pic {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  nav.navbar .nav-link {
+    font-size: 0.9rem;
+  }
+
+  footer#contact-footer .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ===== Main Content ===== */
+main {
+  flex-grow: 1;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.personal-info p {
+  margin: 0.2rem 0;
+}
+
+/* ===== Icons ===== */
+.bi {
+  font-family: 'bootstrap-icons' !important;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== Certificates Section ===== */
+#certs {
+  min-height: 200px;
+}
+
+.certs-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .certs-placeholder {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+}
+
+.certs-placeholder h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.certs-placeholder p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
