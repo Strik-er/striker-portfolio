@@ -48,6 +48,14 @@ nav#main-navbar.dark-theme .navbar-brand {
   color: #ddd;
 }
 
+/* Switchers container - fixed width to prevent jumping */
+.switchers-container {
+  width: 140px;
+  min-width: 140px;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
 /* ===== Profile Picture ===== */
 img#profile-pic {
   max-width: 100%;
@@ -62,7 +70,7 @@ body.dark-theme img#profile-pic {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
-/* ===== Buttons ===== */
+/* ===== Buttons (Language & Theme Switchers) ===== */
 .lang-btn,
 #theme-toggle {
   background: none;
@@ -72,16 +80,51 @@ body.dark-theme img#profile-pic {
   cursor: pointer;
   transition: transform 0.2s ease;
   color: inherit;
+  /* Fixed dimensions to prevent jumping */
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: 8px;
 }
 
 .lang-btn:hover,
 #theme-toggle:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.lang-btn:active,
+#theme-toggle:active {
+  transform: scale(0.95);
 }
 
 .lang-btn.active {
-  border-bottom: 2px solid #007bff;
+  background-color: rgba(0, 123, 255, 0.15);
+  border: 2px solid #007bff;
 }
+
+/* Dark theme button adjustments */
+body.dark-theme .lang-btn:hover,
+body.dark-theme #theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .lang-btn.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #4dabf7;
+}
+
+/* Icon sizing for theme toggle */
+#theme-toggle i {
+  font-size: 20px;
+}
+
 
 /* ===== Portfolio Cards ===== */
 .card-portfolio {

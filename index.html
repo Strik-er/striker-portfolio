@@ -148,36 +148,37 @@
         </div>
         
         <div class="order-lg-3 d-flex align-items-center ml-lg-3 mt-3 mt-lg-0">
-          <button
-            class="lang-btn"
-            :class="{ 'active': isLangActive('ru') }"
-            @click="setLanguage('ru')"
-            title="Русский"
-            aria-label="Переключить на русский язык"
-            type="button"
-          >
-            🇷🇺
-          </button>
-          <button
-            class="lang-btn"
-            :class="{ 'active': isLangActive('en') }"
-            @click="setLanguage('en')"
-            title="English"
-            aria-label="Switch to English"
-            type="button"
-          >
-            🇬🇧
-          </button>
-          <button
-            id="theme-toggle"
-            @click="toggleTheme()"
-            title="Переключить тему"
-            aria-label="Переключить между светлой и тёмной темой"
-            class="ml-2"
-            type="button"
-          >
-            <i :class="getThemeIcon()" aria-hidden="true"></i>
-          </button>
+          <div class="switchers-container d-flex align-items-center">
+            <button
+              class="lang-btn"
+              :class="{ 'active': isLangActive('ru') }"
+              @click="setLanguage('ru')"
+              title="Русский"
+              aria-label="Переключить на русский язык"
+              type="button"
+            >
+              🇷🇺
+            </button>
+            <button
+              class="lang-btn"
+              :class="{ 'active': isLangActive('en') }"
+              @click="setLanguage('en')"
+              title="English"
+              aria-label="Switch to English"
+              type="button"
+            >
+              🇬🇧
+            </button>
+            <button
+              id="theme-toggle"
+              @click="toggleTheme()"
+              title="Переключить тему"
+              aria-label="Переключить между светлой и тёмной темой"
+              type="button"
+            >
+              <i :class="getThemeIcon()" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
