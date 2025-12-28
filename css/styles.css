@@ -255,26 +255,72 @@ body.dark-theme .certs-placeholder {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Light theme - light backgrounds with dark text */
+body.light-theme .section-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #222;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .section-card h2,
+body.light-theme .section-card h3 {
+  color: #222;
+}
+
+body.light-theme .section-card p,
+body.light-theme .section-card ul,
+body.light-theme .section-card li {
+  color: #444;
+}
+
+body.light-theme .section-card a {
+  color: #007bff;
+  border-bottom-color: rgba(0, 123, 255, 0.3);
+}
+
+body.light-theme .section-card a:hover {
+  border-bottom-color: #007bff;
+}
+
+/* Dark theme - keep gradients with white text */
 body.dark-theme .section-card {
   background: linear-gradient(135deg, #434343 0%, #000000 100%);
+  color: white;
+}
+
+body.dark-theme .section-card h2,
+body.dark-theme .section-card h3 {
+  color: white;
+}
+
+body.dark-theme .section-card p,
+body.dark-theme .section-card ul,
+body.dark-theme .section-card li {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-theme .section-card a {
+  color: #ffd700;
+  border-bottom-color: rgba(255, 215, 0, 0.3);
+}
+
+body.dark-theme .section-card a:hover {
+  border-bottom-color: #ffd700;
 }
 
 .section-card h2 {
-  color: white;
   margin-bottom: 1.5rem;
   font-size: 2rem;
   font-weight: 600;
 }
 
 .section-card h3 {
-  color: white;
   opacity: 0.95;
 }
 
 .section-card p,
 .section-card ul,
 .section-card li {
-  color: rgba(255, 255, 255, 0.9);
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -288,46 +334,57 @@ body.dark-theme .section-card {
 }
 
 .section-card a {
-  color: #ffd700;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid;
   transition: border-color 0.3s;
 }
 
-.section-card a:hover {
-  border-bottom-color: #ffd700;
+/* Different light gradient colors for variety in light theme */
+body.light-theme .section-card.gradient-purple {
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
 }
 
-/* Different gradient colors for variety */
-.section-card.gradient-purple {
+body.light-theme .section-card.gradient-blue {
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+body.light-theme .section-card.gradient-pink {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+body.light-theme .section-card.gradient-orange {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+body.light-theme .section-card.gradient-green {
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+body.light-theme .section-card.gradient-red {
+  background: linear-gradient(135deg, #fdcbf1 0%, #e6dee9 100%);
+}
+
+/* Dark theme gradients */
+body.dark-theme .section-card.gradient-purple {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.section-card.gradient-blue {
+body.dark-theme .section-card.gradient-blue {
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
-.section-card.gradient-pink {
+body.dark-theme .section-card.gradient-pink {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
-.section-card.gradient-orange {
+body.dark-theme .section-card.gradient-orange {
   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
-.section-card.gradient-green {
+body.dark-theme .section-card.gradient-green {
   background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
 }
 
-.section-card.gradient-red {
-  background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
-}
-
-body.dark-theme .section-card.gradient-purple,
-body.dark-theme .section-card.gradient-blue,
-body.dark-theme .section-card.gradient-pink,
-body.dark-theme .section-card.gradient-orange,
-body.dark-theme .section-card.gradient-green,
 body.dark-theme .section-card.gradient-red {
-  background: linear-gradient(135deg, #2c2f3a 0%, #1a1d28 100%);
+  background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
 }
