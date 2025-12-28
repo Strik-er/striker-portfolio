@@ -121,7 +121,7 @@ document.addEventListener('alpine:init', () => {
         "url": "https://striker.su",
         "sameAs": [
           "https://t.me/striker_pub",
-          "https://linkedin.com/in/dgusev"
+          "https://www.linkedin.com/in/gusev-de"
         ]
       };
       
