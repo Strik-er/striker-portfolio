@@ -129,11 +129,6 @@ document.addEventListener('alpine:init', () => {
       if (scriptTag) {
         scriptTag.textContent = JSON.stringify(schema, null, 2);
       }
-    },
-    
-    // Download CV
-    downloadCV() {
-      window.open('/files/DGusev_CV.pdf', '_blank');
     }
   }));
   
