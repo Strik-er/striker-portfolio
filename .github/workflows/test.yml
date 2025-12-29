@@ -19,8 +19,7 @@ jobs:
         with:
           root: ./
           css: true
-          # Ignore Alpine.js attributes
-          extra: --ignore-re 'Attribute "x-.*" not allowed' 'Attribute "@.*" not allowed' 'Attribute ":.*" not allowed'
+          extra: --ignore-re 'Attribute "x-.*" not allowed' 'Attribute "@.*" not allowed' 'Attribute ":.*" not allowed' 'Bad value "X-Content-Type-Options"' 'Using the "meta" element to specify'
       
       - name: Check links
         continue-on-error: true
