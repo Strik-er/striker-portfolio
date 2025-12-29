@@ -1,46 +1,33 @@
-name: Deploy to Production
+name: Deploy to Server
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:  # Позволяет запускать вручную
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
-    name: Deploy to striker.su
     runs-on: ubuntu-latest
     
     steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
-        
-      - name: 🔑 Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
-- name: 🔐 Add server to known hosts
-  run: |
-    mkdir -p ~/.ssh
-    chmod 700 ~/.ssh
-    ssh-keyscan -p 22 -H striker.su >> ~/.ssh/known_hosts 2>/dev/null || true
-          
-      - name: 🚀 Deploy to server
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup SSH
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
-            cd ${{ secrets.DEPLOY_PATH }}
-            
-            echo "📥 Pulling latest changes..."
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
+            cd /opt/www/striker.su/public_html
             git pull origin main
-            
-            echo "🔄 Checking Git status..."
-            git status
-            
-            echo "✅ Deployment completed at $(date)"
+            echo "✅ Deployment successful!"
           ENDSSH
-          
-      - name: 🎉 Deployment Success
-        run: |
-          echo "✅ Successfully deployed to https://striker.su"
-          echo "🔗 Check: https://striker.su"
+      
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/id_rsa
