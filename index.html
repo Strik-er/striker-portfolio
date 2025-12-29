@@ -91,7 +91,7 @@
 <body class="light-theme" x-data="portfolio" x-init="init()">
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm" id="main-navbar" role="navigation">
-      <div class="container d-flex align-items-center justify-content-between flex-wrap">
+      <div class="container d-flex align-items-center justify-content-between">
         <a class="navbar-brand mr-3" href="#" x-text="t('name')">Дмитрий Евгеньевич Гусев</a>
         
         <button
@@ -107,7 +107,7 @@
         </button>
         
         <div class="collapse navbar-collapse flex-grow-0 order-lg-2" id="navbarContent">
-          <ul class="navbar-nav d-flex flex-row">
+          <ul class="navbar-nav d-flex flex-row flex-nowrap">
             <li class="nav-item mx-2">
               <a class="nav-link" href="#about" x-smooth-scroll aria-label="Перейти к разделу Главная">
                 <i class="bi bi-house-door" aria-hidden="true"></i>
@@ -147,7 +147,7 @@
           </ul>
         </div>
         
-        <div class="order-lg-3 d-flex align-items-center ml-lg-3 mt-3 mt-lg-0">
+        <div class="order-lg-3 d-flex align-items-center ml-lg-3">
           <div class="switchers-container d-flex align-items-center">
             <button
               class="lang-btn"
@@ -157,7 +157,7 @@
               aria-label="Переключить на русский язык"
               type="button"
             >
-              🇷🇺
+              <span class="lang-text">RU</span>
             </button>
             <button
               class="lang-btn"
@@ -167,7 +167,7 @@
               aria-label="Switch to English"
               type="button"
             >
-              🇬🇧
+              <span class="lang-text">EN</span>
             </button>
             <button
               id="theme-toggle"

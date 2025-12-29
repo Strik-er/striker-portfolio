@@ -33,10 +33,15 @@ nav#main-navbar {
   transition: background-color 0.3s, color 0.3s;
 }
 
+nav#main-navbar .container {
+  flex-wrap: nowrap !important;
+}
+
 nav#main-navbar .nav-link,
 nav#main-navbar .navbar-brand {
   color: inherit;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 nav#main-navbar .nav-link:hover,
@@ -48,12 +53,42 @@ nav#main-navbar.dark-theme .navbar-brand {
   color: #ddd;
 }
 
+/* Prevent menu items from wrapping */
+nav#main-navbar .navbar-nav {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+nav#main-navbar .navbar-nav::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
 /* Switchers container - fixed width to prevent jumping */
 .switchers-container {
   width: 140px;
   min-width: 140px;
   justify-content: flex-end;
   gap: 5px;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  nav#main-navbar .navbar-brand {
+    font-size: 1rem;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .switchers-container {
+    position: absolute;
+    right: 60px;
+    top: 15px;
+  }
 }
 
 /* ===== Profile Picture ===== */
@@ -78,7 +113,7 @@ body.dark-theme img#profile-pic {
   font-size: 22px;
   margin: 0 5px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
   color: inherit;
   /* Fixed dimensions to prevent jumping */
   width: 40px;
@@ -91,6 +126,14 @@ body.dark-theme img#profile-pic {
   flex-shrink: 0;
   padding: 0;
   border-radius: 8px;
+}
+
+/* Language text styling */
+.lang-btn .lang-text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  user-select: none;
 }
 
 .lang-btn:hover,
