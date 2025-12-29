@@ -474,3 +474,371 @@ body.dark-theme .section-card.gradient-green {
 body.dark-theme .section-card.gradient-red {
   background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
 }
+
+/* ===== Skill Bars ===== */
+.skills-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-item {
+  margin-bottom: 25px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.skill-name i {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+body.dark-theme .skill-name i {
+  color: #4dabf7;
+}
+
+.skill-percent {
+  font-weight: 600;
+  color: #007bff;
+}
+
+body.dark-theme .skill-percent {
+  color: #4dabf7;
+}
+
+.skill-bar {
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+body.dark-theme .skill-bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skill-progress.animate {
+  width: var(--skill-percent);
+}
+
+/* ===== CTA Section ===== */
+#cta {
+  padding: 60px 0;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .cta-container {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cta-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-cta-secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+body.dark-theme .btn-cta-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #4dabf7;
+  border-color: #4dabf7;
+}
+
+.btn-cta-secondary:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  text-decoration: none;
+}
+
+body.dark-theme .btn-cta-secondary:hover {
+  background: #4dabf7;
+  border-color: #4dabf7;
+}
+
+.btn-cta i {
+  font-size: 20px;
+}
+
+/* ===== Contact Form ===== */
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group label i {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+body.dark-theme .form-group label i {
+  color: #4dabf7;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  color: #222;
+}
+
+body.dark-theme .form-control {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+body.dark-theme .form-control:focus {
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.1);
+}
+
+.form-control::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.alert-success {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.alert-danger {
+  background: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* ===== Telegram Float Button ===== */
+.telegram-float-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #0088cc 0%, #229ed9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.telegram-float-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 30px rgba(0, 136, 204, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.telegram-float-btn i {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===== Scroll Animations ===== */
+.section-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-card:nth-child(1) { animation-delay: 0.1s; }
+.section-card:nth-child(2) { animation-delay: 0.2s; }
+.section-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .cta-title {
+    font-size: 1.8rem;
+  }
+  
+  .cta-subtitle {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .btn-cta {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .telegram-float-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}

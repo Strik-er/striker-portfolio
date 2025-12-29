@@ -146,3 +146,66 @@ document.addEventListener('alpine:init', () => {
     });
   });
 });
+
+  // ===== Contact Form Component =====
+  Alpine.data('contactForm', () => ({
+    formData: {
+      name: '',
+      email: '',
+      message: ''
+    },
+    status: {
+      sending: false,
+      message: '',
+      type: '' // 'success' or 'error'
+    },
+    
+    async submitForm() {
+      // Validation
+      if (!this.formData.name || !this.formData.email || !this.formData.message) {
+        this.status.message = this.t('form_error');
+        this.status.type = 'error';
+        return;
+      }
+      
+      this.status.sending = true;
+      this.status.message = '';
+      
+      try {
+        // Simulate form submission (replace with real endpoint)
+        // Example: Send to Telegram Bot, email service, or your backend
+        
+        // For now, we'll use mailto: as fallback
+        const subject = encodeURIComponent(`Сообщение от ${this.formData.name}`);
+        const body = encodeURIComponent(
+          `Имя: ${this.formData.name}\n` +
+          `Email: ${this.formData.email}\n\n` +
+          `Сообщение:\n${this.formData.message}`
+        );
+        
+        // Open mailto
+        window.location.href = `mailto:striker@striker.su?subject=${subject}&body=${body}`;
+        
+        // Show success message
+        this.status.message = this.t('form_success');
+        this.status.type = 'success';
+        
+        // Clear form
+        this.formData = { name: '', email: '', message: '' };
+        
+      } catch (error) {
+        console.error('Form submission error:', error);
+        this.status.message = this.t('form_error');
+        this.status.type = 'error';
+      } finally {
+        this.status.sending = false;
+      }
+    },
+    
+    t(key) {
+      // Access parent portfolio component's translation function
+      return Alpine.store('portfolio')?.t(key) || key;
+    }
+  }));
+  
+});

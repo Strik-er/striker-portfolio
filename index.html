@@ -321,15 +321,107 @@
     <section id="skills" class="mt-5">
       <div class="section-card gradient-pink">
         <h2 x-text="t('skills_title')">Навыки</h2>
-        <ul>
-          <li>Linux (Debian, Ubuntu, CentOS, FreeBSD)</li>
-          <li>NGINX, Apache</li>
-          <li>MySQL, MariaDB</li>
-          <li>Zabbix</li>
-          <li>VMware, KVM</li>
-          <li>Bash, Shell scripting</li>
-          <li x-text="t('network_equipment')">Администрирование сетевого оборудования Juniper, Cisco, Dlink, Orion, BDCOM, HP Procurve, H3C, SNR, Mikrotik</li>
-        </ul>
+        
+        <!-- Skill Bars -->
+        <div class="skills-container">
+          <!-- Linux -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-laptop" aria-hidden="true"></i> 
+                <span x-text="t('skill_linux')">Linux (Debian, Ubuntu, CentOS, FreeBSD)</span>
+              </span>
+              <span class="skill-percent">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- Zabbix -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+                <span x-text="t('skill_zabbix')">Zabbix</span>
+              </span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- VMware -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-cloud-haze2" aria-hidden="true"></i>
+                <span x-text="t('skill_vmware')">VMware, KVM</span>
+              </span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 85%;"></div>
+            </div>
+          </div>
+
+          <!-- Networking -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-router" aria-hidden="true"></i>
+                <span x-text="t('skill_networking')">Cisco, Juniper, Mikrotik</span>
+              </span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 85%;"></div>
+            </div>
+          </div>
+
+          <!-- Web Servers -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-server" aria-hidden="true"></i>
+                <span x-text="t('skill_webservers')">NGINX, Apache</span>
+              </span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-database" aria-hidden="true"></i>
+                <span x-text="t('skill_databases')">MySQL, MariaDB</span>
+              </span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 80%;"></div>
+            </div>
+          </div>
+
+          <!-- Scripting -->
+          <div class="skill-item" x-data="{ visible: false }" x-intersect="visible = true">
+            <div class="skill-header">
+              <span class="skill-name">
+                <i class="bi bi-terminal" aria-hidden="true"></i>
+                <span x-text="t('skill_scripting')">Bash, Shell scripting</span>
+              </span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" :class="{ 'animate': visible }" style="--skill-percent: 85%;"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -363,6 +455,100 @@
           <li x-text="t('hobby_4')">Свободное ПО и автоматизация</li>
           <li x-text="t('hobby_5')">Образование и просвещение в области IT</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="mt-5 text-center">
+      <div class="cta-container">
+        <h2 class="cta-title" x-text="t('cta_title')">Готов к новым проектам!</h2>
+        <p class="cta-subtitle" x-text="t('cta_subtitle')">Свяжитесь со мной для обсуждения сотрудничества</p>
+        <div class="cta-buttons">
+          <a href="tel:+79997984567" class="btn-cta btn-cta-primary">
+            <i class="bi bi-telephone"></i>
+            <span x-text="t('cta_call')">Позвонить</span>
+          </a>
+          <a href="https://t.me/striker_pub" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
+            <i class="bi bi-telegram"></i>
+            <span x-text="t('cta_telegram')">Telegram</span>
+          </a>
+          <a href="https://www.linkedin.com/in/gusev-de" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
+            <i class="bi bi-linkedin"></i>
+            <span x-text="t('cta_linkedin')">LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="mt-5">
+      <div class="section-card gradient-blue">
+        <h2 x-text="t('contact_form_title')">Напишите мне</h2>
+        <form 
+          x-data="contactForm()" 
+          @submit.prevent="submitForm()"
+          class="contact-form-container"
+        >
+          <div class="form-group">
+            <label for="contact-name">
+              <i class="bi bi-person"></i>
+              <span x-text="t('form_name')">Ваше имя</span>
+            </label>
+            <input 
+              type="text" 
+              id="contact-name" 
+              x-model="formData.name"
+              :placeholder="t('form_name_placeholder')"
+              required
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">
+              <i class="bi bi-envelope"></i>
+              <span x-text="t('form_email')">Email</span>
+            </label>
+            <input 
+              type="email" 
+              id="contact-email" 
+              x-model="formData.email"
+              :placeholder="t('form_email_placeholder')"
+              required
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">
+              <i class="bi bi-chat-text"></i>
+              <span x-text="t('form_message')">Сообщение</span>
+            </label>
+            <textarea 
+              id="contact-message" 
+              x-model="formData.message"
+              :placeholder="t('form_message_placeholder')"
+              required
+              rows="5"
+              class="form-control"
+            ></textarea>
+          </div>
+
+          <div x-show="status.message" 
+               :class="status.type === 'success' ? 'alert-success' : 'alert-danger'"
+               class="alert mt-3">
+            <span x-text="status.message"></span>
+          </div>
+
+          <button 
+            type="submit" 
+            class="btn-submit"
+            :disabled="status.sending"
+          >
+            <span x-show="!status.sending" x-text="t('form_submit')">Отправить</span>
+            <span x-show="status.sending" x-text="t('form_sending')">Отправка...</span>
+          </button>
+        </form>
       </div>
     </section>
   </main>
@@ -578,6 +764,25 @@
   }
   </script>
   
+  
+  <!-- Telegram Widget -->
+  <script async src="https://telegram.org/js/telegram-widget.js?22" 
+          data-telegram-login="striker_pub" 
+          data-size="large" 
+          data-userpic="false" 
+          data-radius="10">
+  </script>
+  
+  <!-- Telegram Floating Button -->
+  <a href="https://t.me/striker_pub" 
+     target="_blank" 
+     rel="noopener"
+     class="telegram-float-btn"
+     title="Написать в Telegram"
+     aria-label="Открыть чат в Telegram">
+    <i class="bi bi-telegram"></i>
+  </a>
+  
   <!-- Yandex.Metrika -->
   <script type="text/javascript" async>
     (function(m,e,t,r,i,k,a){
@@ -597,5 +802,14 @@
   <noscript>
     <div><img src="https://mc.yandex.ru/watch/92335692" style="position:absolute; left:-9999px;" alt="" /></div>
   </noscript>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // Замените на свой ID
+  </script>
 </body>
 </html>
