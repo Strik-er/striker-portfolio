@@ -22,6 +22,10 @@ document.addEventListener('alpine:init', () => {
 
       // Update Schema.org
       this.updateSchema();
+      
+      // Expose translations globally for child components
+      window.portfolioTranslations = this.translations;
+      window.portfolioLang = this.currentLang;
     },
 
     // Load translation files
@@ -33,6 +37,9 @@ document.addEventListener('alpine:init', () => {
         ]);
 
         this.translations = { ru, en };
+        
+        // Update global reference
+        window.portfolioTranslations = this.translations;
 
         // Update meta tags after translations loaded
         this.$nextTick(() => this.updateMetaTags());
@@ -55,6 +62,9 @@ document.addEventListener('alpine:init', () => {
       document.documentElement.lang = lang;
       this.updateMetaTags();
       this.updateSchema();
+      
+      // Update global reference
+      window.portfolioLang = lang;
     },
 
     // Toggle theme
@@ -145,18 +155,25 @@ document.addEventListener('alpine:init', () => {
       type: '' // 'success' or 'error'
     },
 
-    // Access parent translation
-    get parentData() {
-      return this.$root.$data;
-    },
-
+    // Get translation from global scope
     t(key) {
-      return this.parentData?.t?.(key) || key;
+      if (window.portfolioTranslations && window.portfolioLang) {
+        return window.portfolioTranslations[window.portfolioLang]?.[key] || key;
+      }
+      return key;
     },
 
     async submitForm() {
       // Validation
       if (!this.formData.name || !this.formData.email || !this.formData.message) {
+        this.status.message = this.t('form_error');
+        this.status.type = 'error';
+        return;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(this.formData.email)) {
         this.status.message = this.t('form_error');
         this.status.type = 'error';
         return;
@@ -194,7 +211,7 @@ document.addEventListener('alpine:init', () => {
     }
   }));
 
-  // ===== Smooth Scroll Component =====
+  // ===== Smooth Scroll Directive =====
   Alpine.directive('smooth-scroll', (el) => {
     el.addEventListener('click', (e) => {
       const href = el.getAttribute('href');
