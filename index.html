@@ -29,8 +29,20 @@
   <meta name="yandex" content="index, follow" />
   
   <!-- Security -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com https://mc.yandex.ru; img-src 'self' data: https://striker.su https://mc.yandex.ru; script-src 'self' https://cdn.jsdelivr.net https://mc.yandex.ru 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com 'unsafe-inline'; font-src 'self' data: https://cdn.jsdelivr.net" />
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 
+    https://cdn.jsdelivr.net 
+    https://mc.yandex.ru 
+    https://telegram.org 
+    https://www.googletagmanager.com 
+    'unsafe-inline' 
+    'unsafe-eval';
+  style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+  img-src 'self' data: https:;
+  font-src 'self' data:;
+  connect-src 'self' https://mc.yandex.ru https://www.google-analytics.com;
+">
   
   <!-- Open Graph -->
   <meta property="og:locale" content="ru_RU" />
@@ -572,7 +584,10 @@
       </a>
     </div>
   </footer>
-
+<!-- Alpine.js Intersect Plugin -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+<!-- Alpine.js Core -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   

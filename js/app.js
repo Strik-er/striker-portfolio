@@ -1,29 +1,29 @@
 // Alpine.js Portfolio App
 document.addEventListener('alpine:init', () => {
-  
+
   // ===== Main Portfolio Component =====
   Alpine.data('portfolio', () => ({
     // State
     currentLang: 'ru',
     currentTheme: 'light',
     translations: {},
-    
+
     // Initialize
     async init() {
       // Load saved preferences
       this.currentLang = localStorage.getItem('lang') || 'ru';
       this.currentTheme = localStorage.getItem('theme') || 'light';
-      
+
       // Load translations
       await this.loadTranslations();
-      
+
       // Apply theme
       this.applyTheme();
-      
+
       // Update Schema.org
       this.updateSchema();
     },
-    
+
     // Load translation files
     async loadTranslations() {
       try {
@@ -31,9 +31,9 @@ document.addEventListener('alpine:init', () => {
           fetch('/locales/ru.json').then(r => r.json()),
           fetch('/locales/en.json').then(r => r.json())
         ]);
-        
+
         this.translations = { ru, en };
-        
+
         // Update meta tags after translations loaded
         this.$nextTick(() => this.updateMetaTags());
       } catch (error) {
@@ -42,12 +42,12 @@ document.addEventListener('alpine:init', () => {
         this.translations = { ru: {}, en: {} };
       }
     },
-    
+
     // Get translation
     t(key) {
       return this.translations[this.currentLang]?.[key] || key;
     },
-    
+
     // Change language
     setLanguage(lang) {
       this.currentLang = lang;
@@ -56,34 +56,34 @@ document.addEventListener('alpine:init', () => {
       this.updateMetaTags();
       this.updateSchema();
     },
-    
+
     // Toggle theme
     toggleTheme() {
       this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
       localStorage.setItem('theme', this.currentTheme);
       this.applyTheme();
     },
-    
+
     // Apply theme to body
     applyTheme() {
       document.body.className = this.currentTheme + '-theme';
     },
-    
+
     // Get theme icon
     getThemeIcon() {
       return this.currentTheme === 'dark' ? 'bi-sun' : 'bi-moon-stars';
     },
-    
+
     // Check if language is active
     isLangActive(lang) {
       return this.currentLang === lang;
     },
-    
+
     // Update meta tags
     updateMetaTags() {
       // Update title
       document.title = this.t('meta_title');
-      
+
       // Update meta tags
       const metaMap = {
         'meta-description': 'meta_description',
@@ -92,7 +92,7 @@ document.addEventListener('alpine:init', () => {
         'twitter-title': 'twitter_title',
         'twitter-description': 'twitter_description'
       };
-      
+
       Object.entries(metaMap).forEach(([id, key]) => {
         const element = document.getElementById(id);
         if (element) {
@@ -101,15 +101,15 @@ document.addEventListener('alpine:init', () => {
         }
       });
     },
-    
+
     // Update Schema.org JSON-LD
     updateSchema() {
       const schema = {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": this.t('name'),
-        "jobTitle": this.currentLang === 'ru' 
-          ? "Генеральный директор, Системный администратор" 
+        "jobTitle": this.currentLang === 'ru'
+          ? "Генеральный директор, Системный администратор"
           : "CEO, System Administrator",
         "address": {
           "@type": "PostalAddress",
@@ -124,28 +124,13 @@ document.addEventListener('alpine:init', () => {
           "https://www.linkedin.com/in/gusev-de"
         ]
       };
-      
+
       const scriptTag = document.querySelector('script[type="application/ld+json"]');
       if (scriptTag) {
         scriptTag.textContent = JSON.stringify(schema, null, 2);
       }
     }
   }));
-  
-  // ===== Smooth Scroll Component =====
-  Alpine.directive('smooth-scroll', (el) => {
-    el.addEventListener('click', (e) => {
-      const href = el.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  });
-});
 
   // ===== Contact Form Component =====
   Alpine.data('contactForm', () => ({
@@ -159,7 +144,16 @@ document.addEventListener('alpine:init', () => {
       message: '',
       type: '' // 'success' or 'error'
     },
-    
+
+    // Access parent translation
+    get parentData() {
+      return this.$root.$data;
+    },
+
+    t(key) {
+      return this.parentData?.t?.(key) || key;
+    },
+
     async submitForm() {
       // Validation
       if (!this.formData.name || !this.formData.email || !this.formData.message) {
@@ -167,14 +161,11 @@ document.addEventListener('alpine:init', () => {
         this.status.type = 'error';
         return;
       }
-      
+
       this.status.sending = true;
       this.status.message = '';
-      
+
       try {
-        // Simulate form submission (replace with real endpoint)
-        // Example: Send to Telegram Bot, email service, or your backend
-        
         // For now, we'll use mailto: as fallback
         const subject = encodeURIComponent(`Сообщение от ${this.formData.name}`);
         const body = encodeURIComponent(
@@ -182,17 +173,17 @@ document.addEventListener('alpine:init', () => {
           `Email: ${this.formData.email}\n\n` +
           `Сообщение:\n${this.formData.message}`
         );
-        
+
         // Open mailto
         window.location.href = `mailto:striker@striker.su?subject=${subject}&body=${body}`;
-        
+
         // Show success message
         this.status.message = this.t('form_success');
         this.status.type = 'success';
-        
+
         // Clear form
         this.formData = { name: '', email: '', message: '' };
-        
+
       } catch (error) {
         console.error('Form submission error:', error);
         this.status.message = this.t('form_error');
@@ -200,12 +191,21 @@ document.addEventListener('alpine:init', () => {
       } finally {
         this.status.sending = false;
       }
-    },
-    
-    t(key) {
-      // Access parent portfolio component's translation function
-      return Alpine.store('portfolio')?.t(key) || key;
     }
   }));
-  
+
+  // ===== Smooth Scroll Component =====
+  Alpine.directive('smooth-scroll', (el) => {
+    el.addEventListener('click', (e) => {
+      const href = el.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
 });
