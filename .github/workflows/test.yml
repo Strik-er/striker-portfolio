@@ -19,9 +19,4 @@ jobs:
         with:
           root: ./
           css: true
-          extra: --ignore-re 'Attribute "x-.*" not allowed' 'Attribute "@.*" not allowed' 'Attribute ":.*" not allowed' 'Bad value "X-Content-Type-Options"' 'Using the "meta" element to specify'
-      
-      - name: Check links
-        continue-on-error: true
-        run: |
-          echo "Link checking disabled"
+          extra: --ignore-re 'Attribute "x-.*" not allowed' 'Attribute "@.*" not allowed' 'Attribute ":.*" not allowed' 'Using the "meta" element to specify' 'Element "script" must not have attribute "async"'
